@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.graphdisplay.ui.theme.Margins
 
 @Composable
@@ -35,7 +36,7 @@ private fun SelectGraphScreenContent() {
 }
 
 @Composable
-private fun GraphRow(
+fun GraphRow(
     text: String,
     navigateTo: ScreenList
 ) {
@@ -48,6 +49,6 @@ private fun GraphRow(
     }
 }
 
-@Preview
-@Composable
-fun SelectGraphScreenPreview() = SelectGraphScreen()
+//@Preview
+//@Composable
+//fun SelectGraphScreenPreview() = SelectGraphScreen()

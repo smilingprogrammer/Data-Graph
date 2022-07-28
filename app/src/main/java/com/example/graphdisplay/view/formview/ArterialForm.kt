@@ -1,9 +1,7 @@
 package com.example.graphdisplay.view.formview
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -16,15 +14,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.graphdisplay.line.LineChartData
+import com.example.graphdisplay.line.LineChartData.Point
 import com.example.graphdisplay.view.ScreenListStatus.navigateHome
 import com.example.graphdisplay.viewModel.ArterialViewModel
+import com.google.gson.Gson
+
 
 @Composable
 fun ArterialForm(navController: NavController) {
     val arterialViewModel = ArterialViewModel()
-    var dummyValue = remember {
-        mutableStateOf("")
-    }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -37,11 +36,75 @@ fun ArterialForm(navController: NavController) {
             )
         },
     ) {
+        ArterialScreenForm(navController, arterialViewModel)
+    }
+}
 
-        TextField(value = dummyValue.value, onValueChange = {
-            dummyValue.value = it
-        })
-        ArterialScreenForm(arterialViewModel)
+@Composable
+fun ArterialScreenForm(
+    navController: NavController, arterialViewModel: ArterialViewModel
+){
+    fun navigateToGraph(){
+        val points = listOf(
+            Point(arterialViewModel.text.value.toFloat(), "Sun"),
+            Point(arterialViewModel.text1.value.toFloat(), "Mon"),
+            Point(arterialViewModel.text2.value.toFloat(), "Tue"),
+            Point(arterialViewModel.text3.value.toFloat(), "Wed"),
+            Point(arterialViewModel.text4.value.toFloat(), "Thur"),
+            Point(arterialViewModel.text5.value.toFloat(), "Fri"),
+            Point(arterialViewModel.text6.value.toFloat(), "Sat")
+        )
+        val pointJson = Gson().toJson(points)
+        navController.navigate("ArterialGraph/$points")
+
+    }
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
+            value = arterialViewModel.text.value,
+            onValueChange = { arterialViewModel.text.value = it },
+            label = { Text("Sunday") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = arterialViewModel.text1.value,
+            onValueChange = { arterialViewModel.text1.value = it },
+            label = { Text("Monday") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = arterialViewModel.text2.value,
+            onValueChange = { arterialViewModel.text2.value = it },
+            label = { Text("Tuesday") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = arterialViewModel.text3.value,
+            onValueChange = { arterialViewModel.text3.value = it },
+            label = { Text("Wednesday") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = arterialViewModel.text4.value,
+            onValueChange = { arterialViewModel.text4.value = it },
+            label = { Text("Thursday") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = arterialViewModel.text5.value,
+            onValueChange = { arterialViewModel.text5.value = it },
+            label = { Text("Friday") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        OutlinedTextField(
+            value = arterialViewModel.text6.value,
+            onValueChange = { arterialViewModel.text6.value = it },
+            label = { Text("Saturday") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
@@ -50,64 +113,10 @@ fun ArterialForm(navController: NavController) {
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-
-            onClick = { navController.navigate("ArterialGraph/${dummyValue.value}") }
+            onClick = {navigateToGraph()}
         ) {
-            Text(text = "Arterial Graph", style = MaterialTheme.typography.button)
+            Text(text = "Get Arterial Pressure Graph", style = MaterialTheme.typography.button)
         }
-    }
-}
-
-@Composable
-fun ArterialScreenForm(
-    arterialViewModel: ArterialViewModel
-){
-    Column(
-        modifier = Modifier.padding(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        OutlinedTextField(
-            value = arterialViewModel.text,
-            onValueChange = { arterialViewModel.text = it },
-            label = { Text("Sunday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = arterialViewModel.text1,
-            onValueChange = { arterialViewModel.text1 = it },
-            label = { Text("Monday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = arterialViewModel.text2,
-            onValueChange = { arterialViewModel.text2 = it },
-            label = { Text("Tuesday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = arterialViewModel.text3,
-            onValueChange = { arterialViewModel.text3 = it },
-            label = { Text("Wednesday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = arterialViewModel.text4,
-            onValueChange = { arterialViewModel.text4 = it },
-            label = { Text("Thursday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = arterialViewModel.text5,
-            onValueChange = { arterialViewModel.text5 = it },
-            label = { Text("Friday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = arterialViewModel.text6,
-            onValueChange = { arterialViewModel.text6 = it },
-            label = { Text("Saturday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
     }
 }
 

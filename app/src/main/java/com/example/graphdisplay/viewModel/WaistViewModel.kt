@@ -9,20 +9,18 @@ import com.example.graphdisplay.line.renderer.point.FilledCircularPointDrawer
 import com.example.graphdisplay.line.renderer.point.HollowCircularPointDrawer
 import com.example.graphdisplay.line.renderer.point.NoPointDrawer
 import com.example.graphdisplay.line.renderer.point.PointDrawer
-import com.example.graphdisplay.model.PointDrawerType
-import kotlin.math.absoluteValue
 
 class WaistViewModel: ViewModel() {
 
-    var text by mutableStateOf("")
-    var text1 by mutableStateOf("")
-    var text2 by mutableStateOf("")
-    var text3 by mutableStateOf("")
-    var text4 by mutableStateOf("")
-    var text5 by mutableStateOf("")
-    var text6 by mutableStateOf("")
+    var text = mutableStateOf("")
+    var text1 = mutableStateOf("")
+    var text2 = mutableStateOf("")
+    var text3 = mutableStateOf("")
+    var text4 = mutableStateOf("")
+    var text5 = mutableStateOf("")
+    var text6 = mutableStateOf("")
 
-    var arterialData by mutableStateOf(
+    var waistData by mutableStateOf(
         LineChartData(
             points = listOf(
                 LineChartData.Point(randomYValue(), "Sun"),

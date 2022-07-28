@@ -1,21 +1,24 @@
 package com.example.graphdisplay.view.formview
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.graphdisplay.view.ScreenListStatus
 import com.example.graphdisplay.viewModel.FatViewModel
 
 @Composable
-fun FatForm() {
+fun FatForm(navController: NavController) {
     val fatViewModel = FatViewModel()
 
     Scaffold(
@@ -29,64 +32,72 @@ fun FatForm() {
                 title = { Text(text = "Subcutaneous Fat Form") }
             )
         },
-    ) { FatScreenForm(fatViewModel) }
+    ) { FatScreenForm(navController, fatViewModel) }
 }
 
 @Composable
 fun FatScreenForm(
-    fatViewModel: FatViewModel
+    navController: NavController, fatViewModel: FatViewModel
 ){
 
     Column(
-        modifier = Modifier.padding(
-            horizontal = 8.dp
-        )
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
-            value = fatViewModel.text,
-            onValueChange = { fatViewModel.text = it },
+            value = fatViewModel.text.value,
+            onValueChange = { fatViewModel.text.value = it },
             label = { Text("Sunday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
-            value = fatViewModel.text1,
-            onValueChange = { fatViewModel.text1 = it },
+            value = fatViewModel.text1.value,
+            onValueChange = { fatViewModel.text1.value = it },
             label = { Text("Monday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
-            value = fatViewModel.text2,
-            onValueChange = { fatViewModel.text2 = it },
+            value = fatViewModel.text2.value,
+            onValueChange = { fatViewModel.text2.value = it },
             label = { Text("Tuesday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
-            value = fatViewModel.text3,
-            onValueChange = { fatViewModel.text3 = it },
+            value = fatViewModel.text3.value,
+            onValueChange = { fatViewModel.text3.value = it },
             label = { Text("Wednesday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
-            value = fatViewModel.text4,
-            onValueChange = { fatViewModel.text4 = it },
+            value = fatViewModel.text4.value,
+            onValueChange = { fatViewModel.text4.value = it },
             label = { Text("Thursday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
-            value = fatViewModel.text5,
-            onValueChange = { fatViewModel.text5 = it },
+            value = fatViewModel.text5.value,
+            onValueChange = { fatViewModel.text5.value = it },
             label = { Text("Friday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
-            value = fatViewModel.text6,
-            onValueChange = { fatViewModel.text6 = it },
+            value = fatViewModel.text6.value,
+            onValueChange = { fatViewModel.text6.value = it },
             label = { Text("Saturday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
+        OutlinedButton(
+            modifier = Modifier
+                .height(50.dp),
+            shape = RoundedCornerShape(10.dp),
+            border = BorderStroke(width = 1.dp, color = Color.White),
+            colors = ButtonDefaults.outlinedButtonColors(
+                backgroundColor = Color.Transparent
+            ),
+            onClick = { navController.navigate("FatGraph") }
+        ) {
+            Text(text = "Get SubCutaneous Fat Graph", style = MaterialTheme.typography.button)
+        }
     }
 }
-
-//@Preview
-//@Composable
-//fun FatFormPreview() = FatForm()

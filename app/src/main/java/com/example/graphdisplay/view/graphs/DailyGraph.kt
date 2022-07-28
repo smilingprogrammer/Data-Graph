@@ -9,18 +9,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.graphdisplay.line.LineChart
-import com.example.graphdisplay.model.DailyModel
 import com.example.graphdisplay.ui.theme.Margins
+import com.example.graphdisplay.viewModel.DailyViewModel
 
 @Composable
 fun DailyGraphView() {
-    val dailyModel = DailyModel()
+    val dailyModel = DailyViewModel()
 
     Column(
-        modifier = Modifier.padding(
-            horizontal = Margins.horizontal,
-            vertical = Margins.vertical
-        )
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Daily Activity", textAlign = TextAlign.Center,
             modifier = Modifier.align(alignment = Alignment.CenterHorizontally))
@@ -29,7 +28,7 @@ fun DailyGraphView() {
 }
 
 @Composable
-fun DailyGraphRow(dailyModel: DailyModel) {
+fun DailyGraphRow(dailyModel: DailyViewModel) {
     Box(
         modifier = Modifier
             .height(250.dp)
@@ -42,7 +41,3 @@ fun DailyGraphRow(dailyModel: DailyModel) {
         )
     }
 }
-
-@Preview
-@Composable
-fun DailyGraphPreview() = DailyGraphView()

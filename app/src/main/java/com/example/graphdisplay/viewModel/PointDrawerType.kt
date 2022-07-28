@@ -1,4 +1,4 @@
-package com.example.graphdisplay.model
+package com.example.graphdisplay.viewModel
 
 enum class PointDrawerType {
     None,

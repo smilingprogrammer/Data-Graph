@@ -9,18 +9,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.graphdisplay.line.LineChart
-import com.example.graphdisplay.model.FatModel
 import com.example.graphdisplay.ui.theme.Margins
+import com.example.graphdisplay.viewModel.FatViewModel
 
 @Composable
 fun FatGraphView() {
-    val fatModel = FatModel()
+    val fatModel = FatViewModel()
 
     Column(
-        modifier = Modifier.padding(
-            horizontal = Margins.horizontal,
-            vertical = Margins.vertical
-        )
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Subcutaneous Fat", textAlign = TextAlign.Center,
             modifier = Modifier.align(alignment = Alignment.CenterHorizontally))
@@ -29,14 +28,14 @@ fun FatGraphView() {
 }
 
 @Composable
-fun FatGraphRow(fatModel: FatModel) {
+fun FatGraphRow(fatModel: FatViewModel) {
     Box(
         modifier = Modifier
             .height(250.dp)
             .fillMaxWidth()
     ) {
         LineChart(
-            lineChartData = fatModel.fatModel,
+            lineChartData = fatModel.fatData,
             horizontalOffset = fatModel.horizontalOffset,
             pointDrawer = fatModel.pointDrawer
         )

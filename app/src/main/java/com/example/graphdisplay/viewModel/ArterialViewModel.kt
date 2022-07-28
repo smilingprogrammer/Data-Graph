@@ -9,7 +9,6 @@ import com.example.graphdisplay.line.renderer.point.FilledCircularPointDrawer
 import com.example.graphdisplay.line.renderer.point.HollowCircularPointDrawer
 import com.example.graphdisplay.line.renderer.point.NoPointDrawer
 import com.example.graphdisplay.line.renderer.point.PointDrawer
-import com.example.graphdisplay.model.PointDrawerType
 
 class ArterialViewModel: ViewModel() {
 

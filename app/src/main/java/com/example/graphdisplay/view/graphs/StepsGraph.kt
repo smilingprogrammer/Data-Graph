@@ -9,18 +9,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.graphdisplay.line.LineChart
-import com.example.graphdisplay.model.StepsModel
 import com.example.graphdisplay.ui.theme.Margins
+import com.example.graphdisplay.viewModel.StepsViewModel
 
 @Composable
 fun StepsGraphView() {
-    val stepsModel = StepsModel()
+    val stepsModel = StepsViewModel()
 
     Column(
-        modifier = Modifier.padding(
-            horizontal = Margins.horizontal,
-            vertical = Margins.vertical
-        )
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Users Steps", textAlign = TextAlign.Center,
             modifier = Modifier.align(alignment = Alignment.CenterHorizontally))
@@ -29,7 +28,7 @@ fun StepsGraphView() {
 }
 
 @Composable
-fun StepsGraphRow(stepsModel: StepsModel) {
+fun StepsGraphRow(stepsModel: StepsViewModel) {
     Box(
         modifier = Modifier
             .height(250.dp)
@@ -42,7 +41,3 @@ fun StepsGraphRow(stepsModel: StepsModel) {
         )
     }
 }
-
-@Preview
-@Composable
-fun StepsGraphPreview() = StepsGraphView()

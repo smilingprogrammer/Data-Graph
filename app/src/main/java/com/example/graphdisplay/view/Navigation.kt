@@ -37,7 +37,7 @@ fun Navigation(){
         }
         composable(ScreenList.ArterialGraph.route, arguments = listOf(
             navArgument("points"){
-                type = NavType.FloatType
+                type = NavType.StringType
             }
         )){ backStackEntry ->
             backStackEntry.arguments?.getString("points")?.let { json ->

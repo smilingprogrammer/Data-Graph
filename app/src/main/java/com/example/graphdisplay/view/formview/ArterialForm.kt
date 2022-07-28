@@ -55,7 +55,7 @@ fun ArterialScreenForm(
             Point(arterialViewModel.text6.value.toFloat(), "Sat")
         )
         val pointJson = Gson().toJson(points)
-        navController.navigate("ArterialGraph/$points")
+        navController.navigate("ArterialGraph/$pointJson")
 
     }
     Column(

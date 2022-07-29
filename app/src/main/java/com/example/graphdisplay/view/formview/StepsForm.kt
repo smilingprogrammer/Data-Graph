@@ -3,8 +3,10 @@ package com.example.graphdisplay.view.formview
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -46,23 +48,22 @@ fun StepsScreenForm(
     val context = LocalContext.current
     fun navigateToGraph(){
         val points = listOf(
-            LineChartData.Point(stepsViewModel.text.value.toFloat(), "Sun"),
-            LineChartData.Point(stepsViewModel.text1.value.toFloat(), "Mon"),
-            LineChartData.Point(stepsViewModel.text2.value.toFloat(), "Tue"),
-            LineChartData.Point(stepsViewModel.text3.value.toFloat(), "Wed"),
-            LineChartData.Point(stepsViewModel.text4.value.toFloat(), "Thur"),
-            LineChartData.Point(stepsViewModel.text5.value.toFloat(), "Fri"),
-            LineChartData.Point(stepsViewModel.text6.value.toFloat(), "Sat")
+            LineChartData.Point(stepsViewModel.text.value.toFloat(), "Week1"),
+            LineChartData.Point(stepsViewModel.text1.value.toFloat(), "week2"),
+            LineChartData.Point(stepsViewModel.text2.value.toFloat(), "week3"),
+            LineChartData.Point(stepsViewModel.text3.value.toFloat(), "week4")
         )
         val pointJson = Gson().toJson(points)
         navController.navigate("StepsGraph/$pointJson")
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text = "Input Number of weekly users that takes needed steps in a month")
+        Spacer(modifier = Modifier.padding(16.dp))
         OutlinedTextField(
             value = stepsViewModel.text.value,
             onValueChange = { stepsViewModel.text.value = it },
@@ -87,24 +88,6 @@ fun StepsScreenForm(
             label = { Text("Wednesday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-        OutlinedTextField(
-            value = stepsViewModel.text4.value,
-            onValueChange = { stepsViewModel.text4.value = it },
-            label = { Text("Thursday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = stepsViewModel.text5.value,
-            onValueChange = { stepsViewModel.text5.value = it },
-            label = { Text("Friday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        OutlinedTextField(
-            value = stepsViewModel.text6.value,
-            onValueChange = { stepsViewModel.text6.value = it },
-            label = { Text("Saturday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
@@ -116,8 +99,6 @@ fun StepsScreenForm(
             onClick = {
                 if (stepsViewModel.text.value.isEmpty() || stepsViewModel.text1.value.isEmpty()
                     || stepsViewModel.text2.value.isEmpty() || stepsViewModel.text3.value.isEmpty()
-                    || stepsViewModel.text4.value.isEmpty() || stepsViewModel.text5.value.isEmpty()
-                    || stepsViewModel.text6.value.isEmpty()
                 ){
                     Toast.makeText(context, "Empty input", Toast.LENGTH_SHORT).show()
                 } else{

@@ -3,8 +3,10 @@ package com.example.graphdisplay.view.formview
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -59,10 +61,12 @@ fun DailyScreenForm(
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text = "Input Number of daily active users")
+        Spacer(modifier = Modifier.padding(16.dp))
         OutlinedTextField(
             value = dailyViewModel.text.value,
             onValueChange = { dailyViewModel.text.value = it },
@@ -111,7 +115,7 @@ fun DailyScreenForm(
             shape = RoundedCornerShape(10.dp),
             border = BorderStroke(width = 1.dp, color = Color.White),
             colors = ButtonDefaults.outlinedButtonColors(
-                backgroundColor = Color.Transparent
+                backgroundColor = Color.DarkGray
             ),
             onClick = {
                 if (dailyViewModel.text.value.isEmpty() || dailyViewModel.text1.value.isEmpty()

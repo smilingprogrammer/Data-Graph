@@ -3,8 +3,10 @@ package com.example.graphdisplay.view.formview
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -47,23 +49,25 @@ fun WeightScreenForm(
 
     fun navigateToGraph(){
         val points = listOf(
-            LineChartData.Point(weightViewModel.text.value.toFloat(), "Sun"),
-            LineChartData.Point(weightViewModel.text1.value.toFloat(), "Mon"),
-            LineChartData.Point(weightViewModel.text2.value.toFloat(), "Tue"),
-            LineChartData.Point(weightViewModel.text3.value.toFloat(), "Wed"),
-            LineChartData.Point(weightViewModel.text4.value.toFloat(), "Thur"),
-            LineChartData.Point(weightViewModel.text5.value.toFloat(), "Fri"),
-            LineChartData.Point(weightViewModel.text6.value.toFloat(), "Sat")
+            LineChartData.Point(weightViewModel.text.value.toFloat(), "2016"),
+            LineChartData.Point(weightViewModel.text1.value.toFloat(), "2017"),
+            LineChartData.Point(weightViewModel.text2.value.toFloat(), "2018"),
+            LineChartData.Point(weightViewModel.text3.value.toFloat(), "2019"),
+            LineChartData.Point(weightViewModel.text4.value.toFloat(), "2020"),
+            LineChartData.Point(weightViewModel.text5.value.toFloat(), "2021"),
+            LineChartData.Point(weightViewModel.text6.value.toFloat(), "2022")
         )
         val pointJson = Gson().toJson(points)
         navController.navigate("WeightGraph/$pointJson")
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text = "Input Number of users annual weight since 2016")
+        Spacer(modifier = Modifier.padding(16.dp))
         OutlinedTextField(
             value = weightViewModel.text.value,
             onValueChange = { weightViewModel.text.value = it },
@@ -112,7 +116,7 @@ fun WeightScreenForm(
             shape = RoundedCornerShape(10.dp),
             border = BorderStroke(width = 1.dp, color = Color.White),
             colors = ButtonDefaults.outlinedButtonColors(
-                backgroundColor = Color.Transparent
+                backgroundColor = Color.DarkGray
             ),
             onClick = {
                 if (weightViewModel.text.value.isEmpty() || weightViewModel.text1.value.isEmpty()

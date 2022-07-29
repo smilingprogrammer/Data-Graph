@@ -4,8 +4,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -62,10 +64,12 @@ fun ArterialScreenForm(
         navController.navigate("ArterialGraph/$pointJson")
     }
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text = "Input Number of daily active users")
+        Spacer(modifier = Modifier.padding(16.dp))
         OutlinedTextField(
             value = arterialViewModel.text.value,
             onValueChange = { arterialViewModel.text.value = it },

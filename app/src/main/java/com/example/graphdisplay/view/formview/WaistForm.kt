@@ -3,8 +3,10 @@ package com.example.graphdisplay.view.formview
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -47,23 +49,25 @@ fun WaistScreenForm(
 
     fun navigateToGraph(){
         val points = listOf(
-            LineChartData.Point(waistViewModel.text.value.toFloat(), "Sun"),
-            LineChartData.Point(waistViewModel.text1.value.toFloat(), "Mon"),
-            LineChartData.Point(waistViewModel.text2.value.toFloat(), "Tue"),
-            LineChartData.Point(waistViewModel.text3.value.toFloat(), "Wed"),
-            LineChartData.Point(waistViewModel.text4.value.toFloat(), "Thur"),
-            LineChartData.Point(waistViewModel.text5.value.toFloat(), "Fri"),
-            LineChartData.Point(waistViewModel.text6.value.toFloat(), "Sat")
+            LineChartData.Point(waistViewModel.text.value.toFloat(), "2016"),
+            LineChartData.Point(waistViewModel.text1.value.toFloat(), "2017"),
+            LineChartData.Point(waistViewModel.text2.value.toFloat(), "2018"),
+            LineChartData.Point(waistViewModel.text3.value.toFloat(), "2019"),
+            LineChartData.Point(waistViewModel.text4.value.toFloat(), "2020"),
+            LineChartData.Point(waistViewModel.text5.value.toFloat(), "2021"),
+            LineChartData.Point(waistViewModel.text6.value.toFloat(), "2022")
         )
         val pointJson = Gson().toJson(points)
         navController.navigate("WaistGraph/$pointJson")
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text = "Input Number of yearly users waist size data")
+        Spacer(modifier = Modifier.padding(16.dp))
         OutlinedTextField(
             value = waistViewModel.text.value,
             onValueChange = { waistViewModel.text.value = it },

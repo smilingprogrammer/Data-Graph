@@ -3,8 +3,10 @@ package com.example.graphdisplay.view.formview
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -46,23 +48,25 @@ fun FatScreenForm(
     val context = LocalContext.current
     fun navigateToGraph(){
         val points = listOf(
-            LineChartData.Point(fatViewModel.text.value.toFloat(), "Sun"),
+            LineChartData.Point(fatViewModel.text.value.toFloat(), "20"),
             LineChartData.Point(fatViewModel.text1.value.toFloat(), "Mon"),
             LineChartData.Point(fatViewModel.text2.value.toFloat(), "Tue"),
             LineChartData.Point(fatViewModel.text3.value.toFloat(), "Wed"),
-            LineChartData.Point(fatViewModel.text4.value.toFloat(), "Thur"),
-            LineChartData.Point(fatViewModel.text5.value.toFloat(), "Fri"),
-            LineChartData.Point(fatViewModel.text6.value.toFloat(), "Sat")
+            LineChartData.Point(fatViewModel.text4.value.toFloat(), "2020"),
+            LineChartData.Point(fatViewModel.text5.value.toFloat(), "2021"),
+            LineChartData.Point(fatViewModel.text6.value.toFloat(), "2022")
         )
         val pointJson = Gson().toJson(points)
         navController.navigate("FatGraph/$pointJson")
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text = "Input Yearly Number of users with subcutaneous fat")
+        Spacer(modifier = Modifier.padding(16.dp))
         OutlinedTextField(
             value = fatViewModel.text.value,
             onValueChange = { fatViewModel.text.value = it },

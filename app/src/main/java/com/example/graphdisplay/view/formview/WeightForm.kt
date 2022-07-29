@@ -1,5 +1,6 @@
 package com.example.graphdisplay.view.formview
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -41,6 +43,8 @@ fun WeightForm(navController: NavController) {
 fun WeightScreenForm(
     navController: NavController,weightViewModel: WeightViewModel
 ){
+    val context = LocalContext.current
+
     fun navigateToGraph(){
         val points = listOf(
             LineChartData.Point(weightViewModel.text.value.toFloat(), "Sun"),
@@ -110,7 +114,17 @@ fun WeightScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navigateToGraph() }
+            onClick = {
+                if (weightViewModel.text.value.isEmpty() || weightViewModel.text1.value.isEmpty()
+                    || weightViewModel.text2.value.isEmpty() || weightViewModel.text3.value.isEmpty()
+                    || weightViewModel.text4.value.isEmpty() || weightViewModel.text5.value.isEmpty()
+                    || weightViewModel.text6.value.isEmpty()
+                ){
+                    Toast.makeText(context, "Empty input", Toast.LENGTH_SHORT).show()
+                } else{
+                    navigateToGraph()
+                }
+            }
         ) {
             Text(text = "Get User's Weight Graph", style = MaterialTheme.typography.button)
         }

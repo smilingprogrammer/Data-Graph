@@ -1,5 +1,6 @@
 package com.example.graphdisplay.view.formview
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -41,6 +43,7 @@ fun StepsForm(navController: NavController) {
 fun StepsScreenForm(
     navController: NavController, stepsViewModel: StepsViewModel
 ){
+    val context = LocalContext.current
     fun navigateToGraph(){
         val points = listOf(
             LineChartData.Point(stepsViewModel.text.value.toFloat(), "Sun"),
@@ -110,7 +113,17 @@ fun StepsScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navigateToGraph() }
+            onClick = {
+                if (stepsViewModel.text.value.isEmpty() || stepsViewModel.text1.value.isEmpty()
+                    || stepsViewModel.text2.value.isEmpty() || stepsViewModel.text3.value.isEmpty()
+                    || stepsViewModel.text4.value.isEmpty() || stepsViewModel.text5.value.isEmpty()
+                    || stepsViewModel.text6.value.isEmpty()
+                ){
+                    Toast.makeText(context, "Empty input", Toast.LENGTH_SHORT).show()
+                } else{
+                    navigateToGraph()
+                }
+            }
         ) {
             Text(text = "Get User's Steps Graph", style = MaterialTheme.typography.button)
         }

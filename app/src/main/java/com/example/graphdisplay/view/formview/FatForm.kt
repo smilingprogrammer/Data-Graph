@@ -1,5 +1,6 @@
 package com.example.graphdisplay.view.formview
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -41,6 +43,7 @@ fun FatForm(navController: NavController) {
 fun FatScreenForm(
     navController: NavController, fatViewModel: FatViewModel
 ){
+    val context = LocalContext.current
     fun navigateToGraph(){
         val points = listOf(
             LineChartData.Point(fatViewModel.text.value.toFloat(), "Sun"),
@@ -110,7 +113,17 @@ fun FatScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navigateToGraph() }
+            onClick = {
+                if (fatViewModel.text.value.isEmpty() || fatViewModel.text1.value.isEmpty()
+                    || fatViewModel.text2.value.isEmpty() || fatViewModel.text3.value.isEmpty()
+                    || fatViewModel.text4.value.isEmpty() || fatViewModel.text5.value.isEmpty()
+                    || fatViewModel.text6.value.isEmpty()
+                ){
+                    Toast.makeText(context, "Empty input", Toast.LENGTH_SHORT).show()
+                } else{
+                    navigateToGraph()
+                }
+            }
         ) {
             Text(text = "Get SubCutaneous Fat Graph", style = MaterialTheme.typography.button)
         }

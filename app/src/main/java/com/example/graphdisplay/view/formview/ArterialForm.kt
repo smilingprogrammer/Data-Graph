@@ -1,6 +1,7 @@
 package com.example.graphdisplay.view.formview
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -43,6 +45,8 @@ fun ArterialForm(navController: NavController) {
 fun ArterialScreenForm(
     navController: NavController, arterialViewModel: ArterialViewModel
 ){
+    val context = LocalContext.current
+
     fun navigateToGraph(){
         val points = listOf(
             Point(arterialViewModel.text.value.toFloat(), "Sun"),
@@ -53,12 +57,9 @@ fun ArterialScreenForm(
             Point(arterialViewModel.text5.value.toFloat(), "Fri"),
             Point(arterialViewModel.text6.value.toFloat(), "Sat")
         )
-        if (points.isNotEmpty()){
-            val pointJson = Gson().toJson(points)
-            navController.navigate("ArterialGraph/$pointJson")
-        } else {
-            Log.d("ArterialForm", "${points.size}")
-        }
+
+        val pointJson = Gson().toJson(points)
+        navController.navigate("ArterialGraph/$pointJson")
     }
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -115,7 +116,17 @@ fun ArterialScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = {navigateToGraph()}
+            onClick = {
+                if (arterialViewModel.text.value.isEmpty() || arterialViewModel.text1.value.isEmpty()
+                    || arterialViewModel.text2.value.isEmpty() || arterialViewModel.text3.value.isEmpty()
+                    || arterialViewModel.text4.value.isEmpty() || arterialViewModel.text5.value.isEmpty()
+                    || arterialViewModel.text6.value.isEmpty()
+                ){
+                    Toast.makeText(context, "Empty input", Toast.LENGTH_SHORT).show()
+                } else{
+                    navigateToGraph()
+                }
+            }
         ) {
             Text(text = "Get Arterial Pressure Graph", style = MaterialTheme.typography.button)
         }

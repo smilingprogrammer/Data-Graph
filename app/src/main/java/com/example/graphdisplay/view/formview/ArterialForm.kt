@@ -51,72 +51,68 @@ fun ArterialScreenForm(
 
     fun navigateToGraph(){
         val points = listOf(
-            Point(arterialViewModel.text.value.toFloat(), "Sun"),
-            Point(arterialViewModel.text1.value.toFloat(), "Mon"),
-            Point(arterialViewModel.text2.value.toFloat(), "Tue"),
-            Point(arterialViewModel.text3.value.toFloat(), "Wed"),
-            Point(arterialViewModel.text4.value.toFloat(), "Thur"),
-            Point(arterialViewModel.text5.value.toFloat(), "Fri"),
-            Point(arterialViewModel.text6.value.toFloat(), "Sat")
+            Point(arterialViewModel.text.value.toFloat(), "Wk1"),
+            Point(arterialViewModel.text1.value.toFloat(), "Wk2"),
+            Point(arterialViewModel.text2.value.toFloat(), "Wk3"),
+            Point(arterialViewModel.text3.value.toFloat(), "Wk4"),
+            Point(arterialViewModel.text4.value.toFloat(), "Wk5"),
+            Point(arterialViewModel.text5.value.toFloat(), "Wk6")
         )
 
         val pointJson = Gson().toJson(points)
         navController.navigate("ArterialGraph/$pointJson")
     }
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Input Number of daily active users")
-        Spacer(modifier = Modifier.padding(16.dp))
+        Text(text = "Input Number users with arterial pressure weekly")
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(
             value = arterialViewModel.text.value,
             onValueChange = { arterialViewModel.text.value = it },
-            label = { Text("Sunday") },
+            label = { Text("Week1") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = arterialViewModel.text1.value,
             onValueChange = { arterialViewModel.text1.value = it },
-            label = { Text("Monday") },
+            label = { Text("Week2") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = arterialViewModel.text2.value,
             onValueChange = { arterialViewModel.text2.value = it },
-            label = { Text("Tuesday") },
+            label = { Text("Week3") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = arterialViewModel.text3.value,
             onValueChange = { arterialViewModel.text3.value = it },
-            label = { Text("Wednesday") },
+            label = { Text("Week4") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = arterialViewModel.text4.value,
             onValueChange = { arterialViewModel.text4.value = it },
-            label = { Text("Thursday") },
+            label = { Text("Week5") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = arterialViewModel.text5.value,
             onValueChange = { arterialViewModel.text5.value = it },
-            label = { Text("Friday") },
+            label = { Text("Week6") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-        OutlinedTextField(
-            value = arterialViewModel.text6.value,
-            onValueChange = { arterialViewModel.text6.value = it },
-            label = { Text("Saturday") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),
-            border = BorderStroke(width = 1.dp, color = Color.White),
+            border = BorderStroke(width = 1.dp, color = Color.Red),
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
@@ -124,7 +120,6 @@ fun ArterialScreenForm(
                 if (arterialViewModel.text.value.isEmpty() || arterialViewModel.text1.value.isEmpty()
                     || arterialViewModel.text2.value.isEmpty() || arterialViewModel.text3.value.isEmpty()
                     || arterialViewModel.text4.value.isEmpty() || arterialViewModel.text5.value.isEmpty()
-                    || arterialViewModel.text6.value.isEmpty()
                 ){
                     Toast.makeText(context, "Empty input", Toast.LENGTH_SHORT).show()
                 } else{

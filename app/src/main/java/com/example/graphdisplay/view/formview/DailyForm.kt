@@ -61,12 +61,14 @@ fun DailyScreenForm(
     }
 
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Input Number of daily active users")
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(
             value = dailyViewModel.text.value,
             onValueChange = { dailyViewModel.text.value = it },
@@ -109,13 +111,14 @@ fun DailyScreenForm(
             label = { Text("Saturday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),
-            border = BorderStroke(width = 1.dp, color = Color.White),
+            border = BorderStroke(width = 1.dp, color = Color.Red),
             colors = ButtonDefaults.outlinedButtonColors(
-                backgroundColor = Color.DarkGray
+                backgroundColor = Color.Transparent
             ),
             onClick = {
                 if (dailyViewModel.text.value.isEmpty() || dailyViewModel.text1.value.isEmpty()

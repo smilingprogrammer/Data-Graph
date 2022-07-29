@@ -48,10 +48,10 @@ fun FatScreenForm(
     val context = LocalContext.current
     fun navigateToGraph(){
         val points = listOf(
-            LineChartData.Point(fatViewModel.text.value.toFloat(), "20"),
-            LineChartData.Point(fatViewModel.text1.value.toFloat(), "Mon"),
-            LineChartData.Point(fatViewModel.text2.value.toFloat(), "Tue"),
-            LineChartData.Point(fatViewModel.text3.value.toFloat(), "Wed"),
+            LineChartData.Point(fatViewModel.text.value.toFloat(), "2016"),
+            LineChartData.Point(fatViewModel.text1.value.toFloat(), "2017"),
+            LineChartData.Point(fatViewModel.text2.value.toFloat(), "2018"),
+            LineChartData.Point(fatViewModel.text3.value.toFloat(), "2019"),
             LineChartData.Point(fatViewModel.text4.value.toFloat(), "2020"),
             LineChartData.Point(fatViewModel.text5.value.toFloat(), "2021"),
             LineChartData.Point(fatViewModel.text6.value.toFloat(), "2022")
@@ -61,59 +61,62 @@ fun FatScreenForm(
     }
 
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Input Yearly Number of users with subcutaneous fat")
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(
             value = fatViewModel.text.value,
             onValueChange = { fatViewModel.text.value = it },
-            label = { Text("Sunday") },
+            label = { Text("2016") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = fatViewModel.text1.value,
             onValueChange = { fatViewModel.text1.value = it },
-            label = { Text("Monday") },
+            label = { Text("2017") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = fatViewModel.text2.value,
             onValueChange = { fatViewModel.text2.value = it },
-            label = { Text("Tuesday") },
+            label = { Text("2018") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = fatViewModel.text3.value,
             onValueChange = { fatViewModel.text3.value = it },
-            label = { Text("Wednesday") },
+            label = { Text("2019") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = fatViewModel.text4.value,
             onValueChange = { fatViewModel.text4.value = it },
-            label = { Text("Thursday") },
+            label = { Text("2020") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = fatViewModel.text5.value,
             onValueChange = { fatViewModel.text5.value = it },
-            label = { Text("Friday") },
+            label = { Text("2021") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = fatViewModel.text6.value,
             onValueChange = { fatViewModel.text6.value = it },
-            label = { Text("Saturday") },
+            label = { Text("2022") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),
-            border = BorderStroke(width = 1.dp, color = Color.White),
+            border = BorderStroke(width = 1.dp, color = Color.Red),
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),

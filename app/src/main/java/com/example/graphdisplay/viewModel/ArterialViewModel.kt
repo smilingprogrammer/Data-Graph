@@ -18,7 +18,6 @@ class ArterialViewModel: ViewModel() {
     var text3 = mutableStateOf("")
     var text4 = mutableStateOf("")
     var text5 = mutableStateOf("")
-    var text6 = mutableStateOf("")
     var horizontalOffset by mutableStateOf(5f)
     var pointDrawerType by mutableStateOf(PointDrawerType.Filled)
     val pointDrawer: PointDrawer

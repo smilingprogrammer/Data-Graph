@@ -62,61 +62,64 @@ fun WeightScreenForm(
     }
 
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Input Number of users annual weight since 2016")
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(
             value = weightViewModel.text.value,
             onValueChange = { weightViewModel.text.value = it },
-            label = { Text("Sunday") },
+            label = { Text("2016") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = weightViewModel.text1.value,
             onValueChange = { weightViewModel.text1.value = it },
-            label = { Text("Monday") },
+            label = { Text("2017") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = weightViewModel.text2.value,
             onValueChange = { weightViewModel.text2.value = it },
-            label = { Text("Tuesday") },
+            label = { Text("2018") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = weightViewModel.text3.value,
             onValueChange = { weightViewModel.text3.value = it },
-            label = { Text("Wednesday") },
+            label = { Text("2019") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = weightViewModel.text4.value,
             onValueChange = { weightViewModel.text4.value = it },
-            label = { Text("Thursday") },
+            label = { Text("2020") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = weightViewModel.text5.value,
             onValueChange = { weightViewModel.text5.value = it },
-            label = { Text("Friday") },
+            label = { Text("2021") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = weightViewModel.text6.value,
             onValueChange = { weightViewModel.text6.value = it },
-            label = { Text("Saturday") },
+            label = { Text("2022") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),
-            border = BorderStroke(width = 1.dp, color = Color.White),
+            border = BorderStroke(width = 1.dp, color = Color.Red),
             colors = ButtonDefaults.outlinedButtonColors(
-                backgroundColor = Color.DarkGray
+                backgroundColor = Color.Transparent
             ),
             onClick = {
                 if (weightViewModel.text.value.isEmpty() || weightViewModel.text1.value.isEmpty()

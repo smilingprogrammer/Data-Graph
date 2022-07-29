@@ -62,59 +62,62 @@ fun WaistScreenForm(
     }
 
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Input Number of yearly users waist size data")
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(
             value = waistViewModel.text.value,
             onValueChange = { waistViewModel.text.value = it },
-            label = { Text("Sunday") },
+            label = { Text("2016") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = waistViewModel.text1.value,
             onValueChange = { waistViewModel.text1.value = it },
-            label = { Text("Monday") },
+            label = { Text("2017") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = waistViewModel.text2.value,
             onValueChange = { waistViewModel.text2.value = it },
-            label = { Text("Tuesday") },
+            label = { Text("2018") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = waistViewModel.text3.value,
             onValueChange = { waistViewModel.text3.value = it },
-            label = { Text("Wednesday") },
+            label = { Text("2019") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = waistViewModel.text4.value,
             onValueChange = { waistViewModel.text4.value = it },
-            label = { Text("Thursday") },
+            label = { Text("2020") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = waistViewModel.text5.value,
             onValueChange = { waistViewModel.text5.value = it },
-            label = { Text("Friday") },
+            label = { Text("2021") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = waistViewModel.text6.value,
             onValueChange = { waistViewModel.text6.value = it },
-            label = { Text("Saturday") },
+            label = { Text("2022") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),
-            border = BorderStroke(width = 1.dp, color = Color.White),
+            border = BorderStroke(width = 1.dp, color = Color.Red),
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),

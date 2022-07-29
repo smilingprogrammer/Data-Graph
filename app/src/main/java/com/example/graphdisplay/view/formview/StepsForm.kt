@@ -48,51 +48,54 @@ fun StepsScreenForm(
     val context = LocalContext.current
     fun navigateToGraph(){
         val points = listOf(
-            LineChartData.Point(stepsViewModel.text.value.toFloat(), "Week1"),
-            LineChartData.Point(stepsViewModel.text1.value.toFloat(), "week2"),
-            LineChartData.Point(stepsViewModel.text2.value.toFloat(), "week3"),
-            LineChartData.Point(stepsViewModel.text3.value.toFloat(), "week4")
+            LineChartData.Point(stepsViewModel.text.value.toFloat(), "Wk1"),
+            LineChartData.Point(stepsViewModel.text1.value.toFloat(), "wk2"),
+            LineChartData.Point(stepsViewModel.text2.value.toFloat(), "wk3"),
+            LineChartData.Point(stepsViewModel.text3.value.toFloat(), "wk4")
         )
         val pointJson = Gson().toJson(points)
         navController.navigate("StepsGraph/$pointJson")
     }
 
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Input Number of weekly users that takes needed steps in a month")
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(
             value = stepsViewModel.text.value,
             onValueChange = { stepsViewModel.text.value = it },
-            label = { Text("Sunday") },
+            label = { Text("Week1") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = stepsViewModel.text1.value,
             onValueChange = { stepsViewModel.text1.value = it },
-            label = { Text("Monday") },
+            label = { Text("Week2") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = stepsViewModel.text2.value,
             onValueChange = { stepsViewModel.text2.value = it },
-            label = { Text("Tuesday") },
+            label = { Text("Week3") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         OutlinedTextField(
             value = stepsViewModel.text3.value,
             onValueChange = { stepsViewModel.text3.value = it },
-            label = { Text("Wednesday") },
+            label = { Text("Week4") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
+        Spacer(modifier = Modifier.padding(4.dp))
         OutlinedButton(
             modifier = Modifier
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),
-            border = BorderStroke(width = 1.dp, color = Color.White),
+            border = BorderStroke(width = 1.dp, color = Color.Red),
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),

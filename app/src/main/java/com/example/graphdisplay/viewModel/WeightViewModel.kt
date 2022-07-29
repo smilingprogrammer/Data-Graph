@@ -20,19 +20,6 @@ class WeightViewModel: ViewModel() {
     var text5 = mutableStateOf("")
     var text6 = mutableStateOf("")
 
-    var weightData by mutableStateOf(
-        LineChartData(
-            points = listOf(
-                LineChartData.Point(randomYValue(), "Sun"),
-                LineChartData.Point(randomYValue(), "Mon"),
-                LineChartData.Point(randomYValue(), "Tue"),
-                LineChartData.Point(randomYValue(), "Wed"),
-                LineChartData.Point(randomYValue(), "Thur"),
-                LineChartData.Point(randomYValue(), "Fri"),
-                LineChartData.Point(randomYValue(), "Sat")
-            )
-        )
-    )
     var horizontalOffset by mutableStateOf(5f)
     var pointDrawerType by mutableStateOf(PointDrawerType.Filled)
     val pointDrawer: PointDrawer

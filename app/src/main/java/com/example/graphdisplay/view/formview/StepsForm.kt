@@ -14,8 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.graphdisplay.line.LineChartData
 import com.example.graphdisplay.view.ScreenListStatus
 import com.example.graphdisplay.viewModel.StepsViewModel
+import com.google.gson.Gson
 
 @Composable
 fun StepsForm(navController: NavController) {
@@ -39,6 +41,19 @@ fun StepsForm(navController: NavController) {
 fun StepsScreenForm(
     navController: NavController, stepsViewModel: StepsViewModel
 ){
+    fun navigateToGraph(){
+        val points = listOf(
+            LineChartData.Point(stepsViewModel.text.value.toFloat(), "Sun"),
+            LineChartData.Point(stepsViewModel.text1.value.toFloat(), "Mon"),
+            LineChartData.Point(stepsViewModel.text2.value.toFloat(), "Tue"),
+            LineChartData.Point(stepsViewModel.text3.value.toFloat(), "Wed"),
+            LineChartData.Point(stepsViewModel.text4.value.toFloat(), "Thur"),
+            LineChartData.Point(stepsViewModel.text5.value.toFloat(), "Fri"),
+            LineChartData.Point(stepsViewModel.text6.value.toFloat(), "Sat")
+        )
+        val pointJson = Gson().toJson(points)
+        navController.navigate("StepsGraph/$pointJson")
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -95,7 +110,7 @@ fun StepsScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navController.navigate("StepsGraph") }
+            onClick = { navigateToGraph() }
         ) {
             Text(text = "Get User's Steps Graph", style = MaterialTheme.typography.button)
         }

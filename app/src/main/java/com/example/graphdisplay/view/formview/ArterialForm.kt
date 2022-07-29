@@ -1,5 +1,6 @@
 package com.example.graphdisplay.view.formview
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,12 +15,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.graphdisplay.line.LineChartData
 import com.example.graphdisplay.line.LineChartData.Point
 import com.example.graphdisplay.view.ScreenListStatus.navigateHome
 import com.example.graphdisplay.viewModel.ArterialViewModel
 import com.google.gson.Gson
-
 
 @Composable
 fun ArterialForm(navController: NavController) {
@@ -54,9 +53,12 @@ fun ArterialScreenForm(
             Point(arterialViewModel.text5.value.toFloat(), "Fri"),
             Point(arterialViewModel.text6.value.toFloat(), "Sat")
         )
-        val pointJson = Gson().toJson(points)
-        navController.navigate("ArterialGraph/$pointJson")
-
+        if (points.isNotEmpty()){
+            val pointJson = Gson().toJson(points)
+            navController.navigate("ArterialGraph/$pointJson")
+        } else {
+            Log.d("ArterialForm", "${points.size}")
+        }
     }
     Column(
         modifier = Modifier.fillMaxSize(),

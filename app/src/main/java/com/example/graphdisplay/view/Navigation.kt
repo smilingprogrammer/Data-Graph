@@ -9,7 +9,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.graphdisplay.line.LineChartData
 import com.example.graphdisplay.line.LineChartData.Point
 import com.example.graphdisplay.view.formview.*
 import com.example.graphdisplay.view.graphs.*
@@ -41,24 +40,59 @@ fun Navigation(){
             }
         )){ backStackEntry ->
             backStackEntry.arguments?.getString("points")?.let { json ->
-                val points = Gson().fromJson(json, Point::class.java)
-                ArterialGraphView(points = listOf(points))
+                val points: List<Point> = Gson().fromJson(json, Array<Point>::class.java).toList()
+                ArterialGraphView(points = (points))
             }
         }
-        composable(ScreenList.DailyGraph.route){
-            DailyGraphView()
+        composable(ScreenList.DailyGraph.route, arguments = listOf(
+            navArgument("points"){
+                type = NavType.StringType
+            }
+        )){ backStackEntry ->
+            backStackEntry.arguments?.getString("points")?.let { json ->
+                val points: List<Point> = Gson().fromJson(json, Array<Point>::class.java).toList()
+                DailyGraphView(points = (points))
+            }
         }
-        composable(ScreenList.FatGraph.route){
-            FatGraphView()
+        composable(ScreenList.FatGraph.route, arguments = listOf(
+            navArgument("points"){
+                type = NavType.StringType
+            }
+        )){ backStackEntry ->
+            backStackEntry.arguments?.getString("points")?.let { json ->
+                val points: List<Point> = Gson().fromJson(json, Array<Point>::class.java).toList()
+                FatGraphView(points = (points))
+            }
         }
-        composable(ScreenList.StepsGraph.route){
-            StepsGraphView()
+        composable(ScreenList.StepsGraph.route, arguments = listOf(
+            navArgument("points"){
+                type = NavType.StringType
+            }
+        )){ backStackEntry ->
+            backStackEntry.arguments?.getString("points")?.let { json ->
+                val points: List<Point> = Gson().fromJson(json, Array<Point>::class.java).toList()
+                StepsGraphView(points = (points))
+            }
         }
-        composable(ScreenList.WaistGraph.route){
-            WaistGraphView()
+        composable(ScreenList.WaistGraph.route, arguments = listOf(
+            navArgument("points"){
+                type = NavType.StringType
+            }
+        )){ backStackEntry ->
+            backStackEntry.arguments?.getString("points")?.let { json ->
+                val points: List<Point> = Gson().fromJson(json, Array<Point>::class.java).toList()
+                WaistGraphView(points = (points))
+            }
         }
-        composable(ScreenList.WeightGraph.route){
-            WeightGraphView()
+        composable(ScreenList.WeightGraph.route, arguments = listOf(
+            navArgument("points"){
+                type = NavType.StringType
+            }
+        )){ backStackEntry ->
+            backStackEntry.arguments?.getString("points")?.let { json ->
+                val points: List<Point> = Gson().fromJson(json, Array<Point>::class.java).toList()
+                WeightGraphView(points = (points))
+            }
         }
     }
 }

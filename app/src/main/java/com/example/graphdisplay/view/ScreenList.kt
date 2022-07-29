@@ -13,11 +13,11 @@ sealed class ScreenList(val route: String) {
     object WaistForm : ScreenList("WaistForm")
     object WeightForm : ScreenList("WeightForm")
     object ArterialGraph : ScreenList("ArterialGraph/{points}")
-    object DailyGraph : ScreenList("DailyGraph")
-    object FatGraph : ScreenList("FatGraph")
-    object StepsGraph : ScreenList("StepsGraph")
-    object WaistGraph : ScreenList("WaistGraph")
-    object WeightGraph : ScreenList("WeightGraph")
+    object DailyGraph : ScreenList("DailyGraph/{points}")
+    object FatGraph : ScreenList("FatGraph/{points}")
+    object StepsGraph : ScreenList("StepsGraph/{points}")
+    object WaistGraph : ScreenList("WaistGraph/{points}")
+    object WeightGraph : ScreenList("WeightGraph/{points}")
 }
 
 object ScreenListStatus {

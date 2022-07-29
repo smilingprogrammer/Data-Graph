@@ -14,8 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.graphdisplay.line.LineChartData
 import com.example.graphdisplay.view.ScreenListStatus
 import com.example.graphdisplay.viewModel.DailyViewModel
+import com.google.gson.Gson
 
 @Composable
 fun DailyForm(navController: NavController) {
@@ -39,6 +41,19 @@ fun DailyForm(navController: NavController) {
 fun DailyScreenForm(
     navController: NavController,dailyViewModel: DailyViewModel
 ){
+    fun navigateToGraph(){
+        val points = listOf(
+            LineChartData.Point(dailyViewModel.text.value.toFloat(), "Sun"),
+            LineChartData.Point(dailyViewModel.text1.value.toFloat(), "Mon"),
+            LineChartData.Point(dailyViewModel.text2.value.toFloat(), "Tue"),
+            LineChartData.Point(dailyViewModel.text3.value.toFloat(), "Wed"),
+            LineChartData.Point(dailyViewModel.text4.value.toFloat(), "Thur"),
+            LineChartData.Point(dailyViewModel.text5.value.toFloat(), "Fri"),
+            LineChartData.Point(dailyViewModel.text6.value.toFloat(), "Sat")
+        )
+        val pointJson = Gson().toJson(points)
+        navController.navigate("DailyGraph/$pointJson")
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -71,7 +86,7 @@ fun DailyScreenForm(
         )
         OutlinedTextField(
             value = dailyViewModel.text4.value,
-            onValueChange = { dailyViewModel.text.value = it },
+            onValueChange = { dailyViewModel.text4.value = it },
             label = { Text("Thursday") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
@@ -95,7 +110,7 @@ fun DailyScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navController.navigate("DailyGraph") }
+            onClick = { navigateToGraph() }
         ) {
             Text(text = "Get DailyActivity Graph", style = MaterialTheme.typography.button)
         }

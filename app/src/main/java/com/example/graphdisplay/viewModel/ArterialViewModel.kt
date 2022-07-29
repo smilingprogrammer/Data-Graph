@@ -19,20 +19,6 @@ class ArterialViewModel: ViewModel() {
     var text4 = mutableStateOf("")
     var text5 = mutableStateOf("")
     var text6 = mutableStateOf("")
-
-    var arterialData by mutableStateOf(
-        LineChartData(
-            points = listOf(
-                LineChartData.Point(randomYValue(), "Sun"),
-                LineChartData.Point(randomYValue(), "Mon"),
-                LineChartData.Point(randomYValue(), "Tue"),
-                LineChartData.Point(randomYValue(), "Wed"),
-                LineChartData.Point(randomYValue(), "Thur"),
-                LineChartData.Point(randomYValue(), "Fri"),
-                LineChartData.Point(randomYValue(), "Sat")
-            )
-        )
-    )
     var horizontalOffset by mutableStateOf(5f)
     var pointDrawerType by mutableStateOf(PointDrawerType.Filled)
     val pointDrawer: PointDrawer
@@ -43,6 +29,4 @@ class ArterialViewModel: ViewModel() {
                 PointDrawerType.Hollow -> HollowCircularPointDrawer()
             }
         }
-
-    private fun randomYValue(): Float = (100f * Math.random()).toFloat() + 45f
 }

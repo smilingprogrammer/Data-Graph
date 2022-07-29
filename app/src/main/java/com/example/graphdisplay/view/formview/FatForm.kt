@@ -14,8 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.graphdisplay.line.LineChartData
 import com.example.graphdisplay.view.ScreenListStatus
 import com.example.graphdisplay.viewModel.FatViewModel
+import com.google.gson.Gson
 
 @Composable
 fun FatForm(navController: NavController) {
@@ -39,6 +41,19 @@ fun FatForm(navController: NavController) {
 fun FatScreenForm(
     navController: NavController, fatViewModel: FatViewModel
 ){
+    fun navigateToGraph(){
+        val points = listOf(
+            LineChartData.Point(fatViewModel.text.value.toFloat(), "Sun"),
+            LineChartData.Point(fatViewModel.text1.value.toFloat(), "Mon"),
+            LineChartData.Point(fatViewModel.text2.value.toFloat(), "Tue"),
+            LineChartData.Point(fatViewModel.text3.value.toFloat(), "Wed"),
+            LineChartData.Point(fatViewModel.text4.value.toFloat(), "Thur"),
+            LineChartData.Point(fatViewModel.text5.value.toFloat(), "Fri"),
+            LineChartData.Point(fatViewModel.text6.value.toFloat(), "Sat")
+        )
+        val pointJson = Gson().toJson(points)
+        navController.navigate("FatGraph/$pointJson")
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -95,7 +110,7 @@ fun FatScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navController.navigate("FatGraph") }
+            onClick = { navigateToGraph() }
         ) {
             Text(text = "Get SubCutaneous Fat Graph", style = MaterialTheme.typography.button)
         }

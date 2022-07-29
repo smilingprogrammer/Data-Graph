@@ -14,8 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.graphdisplay.line.LineChartData
 import com.example.graphdisplay.view.ScreenListStatus
 import com.example.graphdisplay.viewModel.WeightViewModel
+import com.google.gson.Gson
 
 @Composable
 fun WeightForm(navController: NavController) {
@@ -39,6 +41,19 @@ fun WeightForm(navController: NavController) {
 fun WeightScreenForm(
     navController: NavController,weightViewModel: WeightViewModel
 ){
+    fun navigateToGraph(){
+        val points = listOf(
+            LineChartData.Point(weightViewModel.text.value.toFloat(), "Sun"),
+            LineChartData.Point(weightViewModel.text1.value.toFloat(), "Mon"),
+            LineChartData.Point(weightViewModel.text2.value.toFloat(), "Tue"),
+            LineChartData.Point(weightViewModel.text3.value.toFloat(), "Wed"),
+            LineChartData.Point(weightViewModel.text4.value.toFloat(), "Thur"),
+            LineChartData.Point(weightViewModel.text5.value.toFloat(), "Fri"),
+            LineChartData.Point(weightViewModel.text6.value.toFloat(), "Sat")
+        )
+        val pointJson = Gson().toJson(points)
+        navController.navigate("WeightGraph/$pointJson")
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -95,7 +110,7 @@ fun WeightScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navController.navigate("WeightGraph") }
+            onClick = { navigateToGraph() }
         ) {
             Text(text = "Get User's Weight Graph", style = MaterialTheme.typography.button)
         }

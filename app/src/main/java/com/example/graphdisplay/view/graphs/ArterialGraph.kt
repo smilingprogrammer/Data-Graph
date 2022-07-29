@@ -14,8 +14,6 @@ import com.example.graphdisplay.viewModel.ArterialViewModel
 
 @Composable
 fun ArterialGraphView(points: List<Point>) {
-    val arterialModel = ArterialViewModel()
-
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

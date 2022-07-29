@@ -14,8 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.graphdisplay.line.LineChartData
 import com.example.graphdisplay.view.ScreenListStatus
 import com.example.graphdisplay.viewModel.WaistViewModel
+import com.google.gson.Gson
 
 @Composable
 fun WaistForm(navController: NavController) {
@@ -39,6 +41,19 @@ fun WaistForm(navController: NavController) {
 fun WaistScreenForm(
     navController: NavController, waistViewModel: WaistViewModel
 ){
+    fun navigateToGraph(){
+        val points = listOf(
+            LineChartData.Point(waistViewModel.text.value.toFloat(), "Sun"),
+            LineChartData.Point(waistViewModel.text1.value.toFloat(), "Mon"),
+            LineChartData.Point(waistViewModel.text2.value.toFloat(), "Tue"),
+            LineChartData.Point(waistViewModel.text3.value.toFloat(), "Wed"),
+            LineChartData.Point(waistViewModel.text4.value.toFloat(), "Thur"),
+            LineChartData.Point(waistViewModel.text5.value.toFloat(), "Fri"),
+            LineChartData.Point(waistViewModel.text6.value.toFloat(), "Sat")
+        )
+        val pointJson = Gson().toJson(points)
+        navController.navigate("WaistGraph/$pointJson")
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -95,7 +110,7 @@ fun WaistScreenForm(
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = Color.Transparent
             ),
-            onClick = { navController.navigate("WaistGraph") }
+            onClick = { navigateToGraph() }
         ) {
             Text(text = "Get User's Waist Graph", style = MaterialTheme.typography.button)
         }

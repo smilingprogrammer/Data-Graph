@@ -56,7 +56,3 @@ fun GraphRow(
         }
     }
 }
-
-//@Preview
-//@Composable
-//fun SelectGraphScreenPreview() = SelectGraphScreen()

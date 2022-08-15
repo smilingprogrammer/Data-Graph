@@ -19,7 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.graphdisplay.line.LineChartData.Point
+import com.example.graphdisplay.lib.line.LineChartData.Point
 import com.example.graphdisplay.view.ScreenListStatus.navigateHome
 import com.example.graphdisplay.viewModel.ArterialViewModel
 import com.google.gson.Gson

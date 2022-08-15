@@ -7,9 +7,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.graphdisplay.line.LineChart
-import com.example.graphdisplay.line.LineChartData
-import com.example.graphdisplay.line.LineChartData.Point
+import com.example.graphdisplay.lib.line.LineChart
+import com.example.graphdisplay.lib.line.LineChartData
+import com.example.graphdisplay.lib.line.LineChartData.Point
 import com.example.graphdisplay.viewModel.ArterialViewModel
 
 @Composable

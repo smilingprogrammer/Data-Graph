@@ -1,10 +1,10 @@
-package com.example.graphdisplay.line.renderer.line
+package com.example.graphdisplay.lib.line.renderer.line
 
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.graphdisplay.line.renderer.line.LineDrawer
+import com.example.graphdisplay.lib.line.renderer.line.LineDrawer
 
 data class SolidLineDrawer(
   val thickness: Dp = 3.dp,

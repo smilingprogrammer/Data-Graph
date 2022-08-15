@@ -4,11 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.graphdisplay.line.LineChartData
-import com.example.graphdisplay.line.renderer.point.FilledCircularPointDrawer
-import com.example.graphdisplay.line.renderer.point.HollowCircularPointDrawer
-import com.example.graphdisplay.line.renderer.point.NoPointDrawer
-import com.example.graphdisplay.line.renderer.point.PointDrawer
+import com.example.graphdisplay.lib.line.LineChartData
+import com.example.graphdisplay.lib.line.renderer.point.FilledCircularPointDrawer
+import com.example.graphdisplay.lib.line.renderer.point.HollowCircularPointDrawer
+import com.example.graphdisplay.lib.line.renderer.point.NoPointDrawer
+import com.example.graphdisplay.lib.line.renderer.point.PointDrawer
 
 class StepsViewModel: ViewModel() {
 

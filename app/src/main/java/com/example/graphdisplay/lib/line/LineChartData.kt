@@ -1,10 +1,10 @@
-package com.example.graphdisplay.line
+package com.example.graphdisplay.lib.line
 
 data class LineChartData(
-  val points: List<Point>,
-  /** This is percentage we pad yValue by.**/
+    val points: List<Point>,
+    /** This is percentage we pad yValue by.**/
   val padBy: Float = 20f,
-  val startAtZero: Boolean = false
+    val startAtZero: Boolean = false
 ) {
   init {
     require(padBy in 0f..100f)

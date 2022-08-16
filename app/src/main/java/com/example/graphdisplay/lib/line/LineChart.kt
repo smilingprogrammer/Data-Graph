@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line
+package com.example.graphdisplay.lib.line
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
@@ -9,24 +9,24 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import com.example.graphdisplay.line.LineChartUtils.calculateDrawableArea
-import com.example.graphdisplay.line.LineChartUtils.calculateFillPath
-import com.example.graphdisplay.line.LineChartUtils.calculateLinePath
-import com.example.graphdisplay.line.LineChartUtils.calculatePointLocation
-import com.example.graphdisplay.line.LineChartUtils.calculateXAxisDrawableArea
-import com.example.graphdisplay.line.LineChartUtils.calculateXAxisLabelsDrawableArea
-import com.example.graphdisplay.line.LineChartUtils.calculateYAxisDrawableArea
-import com.example.graphdisplay.line.LineChartUtils.withProgress
-import com.example.graphdisplay.line.renderer.line.LineDrawer
-import com.example.graphdisplay.line.renderer.line.LineShader
-import com.example.graphdisplay.line.renderer.line.NoLineShader
-import com.example.graphdisplay.line.renderer.line.SolidLineDrawer
-import com.example.graphdisplay.line.renderer.point.FilledCircularPointDrawer
-import com.example.graphdisplay.line.renderer.point.PointDrawer
-import com.example.graphdisplay.line.renderer.xaxis.SimpleXAxisDrawer
-import com.example.graphdisplay.line.renderer.xaxis.XAxisDrawer
-import com.example.graphdisplay.line.renderer.yaxis.SimpleYAxisDrawer
-import com.example.graphdisplay.line.renderer.yaxis.YAxisDrawer
+import com.example.graphdisplay.lib.line.LineChartUtils.calculateDrawableArea
+import com.example.graphdisplay.lib.line.LineChartUtils.calculateFillPath
+import com.example.graphdisplay.lib.line.LineChartUtils.calculateLinePath
+import com.example.graphdisplay.lib.line.LineChartUtils.calculatePointLocation
+import com.example.graphdisplay.lib.line.LineChartUtils.calculateXAxisDrawableArea
+import com.example.graphdisplay.lib.line.LineChartUtils.calculateXAxisLabelsDrawableArea
+import com.example.graphdisplay.lib.line.LineChartUtils.calculateYAxisDrawableArea
+import com.example.graphdisplay.lib.line.LineChartUtils.withProgress
+import com.example.graphdisplay.lib.line.renderer.line.LineDrawer
+import com.example.graphdisplay.lib.line.renderer.line.LineShader
+import com.example.graphdisplay.lib.line.renderer.line.NoLineShader
+import com.example.graphdisplay.lib.line.renderer.line.SolidLineDrawer
+import com.example.graphdisplay.lib.line.renderer.point.FilledCircularPointDrawer
+import com.example.graphdisplay.lib.line.renderer.point.PointDrawer
+import com.example.graphdisplay.lib.line.renderer.xaxis.SimpleXAxisDrawer
+import com.example.graphdisplay.lib.line.renderer.xaxis.XAxisDrawer
+import com.example.graphdisplay.lib.line.renderer.yaxis.SimpleYAxisDrawer
+import com.example.graphdisplay.lib.line.renderer.yaxis.YAxisDrawer
 
 @Composable
 fun LineChart(

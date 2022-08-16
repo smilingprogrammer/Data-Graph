@@ -1,9 +1,9 @@
-package com.example.graphdisplay.line.renderer.point
+package com.example.graphdisplay.lib.line.renderer.point
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.example.graphdisplay.line.renderer.point.PointDrawer
+import com.example.graphdisplay.lib.line.renderer.point.PointDrawer
 
 object NoPointDrawer : PointDrawer {
   override fun drawPoint(

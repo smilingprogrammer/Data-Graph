@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line
+package com.example.graphdisplay.lib.line
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -6,7 +6,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
-import com.example.graphdisplay.line.LineChartData
+import com.example.graphdisplay.lib.line.LineChartData
 
 object LineChartUtils {
   fun calculateDrawableArea(
@@ -70,10 +70,10 @@ object LineChartUtils {
   }
 
   fun calculatePointLocation(
-    drawableArea: Rect,
-    lineChartData: LineChartData,
-    point: LineChartData.Point,
-    index: Int
+      drawableArea: Rect,
+      lineChartData: LineChartData,
+      point: LineChartData.Point,
+      index: Int
   ): Offset {
     val x = (index.toFloat() / (lineChartData.points.size - 1))
     val y = ((point.value - lineChartData.minYValue) / lineChartData.yRange)
@@ -85,10 +85,10 @@ object LineChartUtils {
   }
 
   fun withProgress(
-    index: Int,
-    lineChartData: LineChartData,
-    transitionProgress: Float,
-    showWithProgress: (progress: Float) -> Unit
+      index: Int,
+      lineChartData: LineChartData,
+      transitionProgress: Float,
+      showWithProgress: (progress: Float) -> Unit
   ) {
     val size = lineChartData.points.size
     val toIndex = (size * transitionProgress).toInt() + 1
@@ -106,9 +106,9 @@ object LineChartUtils {
   }
 
   fun calculateLinePath(
-    drawableArea: Rect,
-    lineChartData: LineChartData,
-    transitionProgress: Float
+      drawableArea: Rect,
+      lineChartData: LineChartData,
+      transitionProgress: Float
   ): Path = Path().apply {
     var prevPointLocation: Offset? = null
     lineChartData.points.forEachIndexed { index, point ->

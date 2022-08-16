@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line.renderer.line
+package com.example.graphdisplay.lib.line.renderer.line
 
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Path

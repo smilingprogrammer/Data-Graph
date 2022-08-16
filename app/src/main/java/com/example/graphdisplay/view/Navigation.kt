@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.graphdisplay.line.LineChartData.Point
+import com.example.graphdisplay.lib.line.LineChartData.Point
 import com.example.graphdisplay.view.formview.*
 import com.example.graphdisplay.view.graphs.*
 import com.google.gson.Gson

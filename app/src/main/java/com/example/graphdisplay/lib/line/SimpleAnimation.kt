@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line
+package com.example.graphdisplay.lib.line
 
 import androidx.compose.animation.core.TweenSpec
 

@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line.renderer.xaxis
+package com.example.graphdisplay.lib.line.renderer.xaxis
 
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Canvas

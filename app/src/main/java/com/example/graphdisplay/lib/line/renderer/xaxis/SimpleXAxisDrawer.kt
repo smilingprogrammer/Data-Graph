@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line.renderer.xaxis
+package com.example.graphdisplay.lib.line.renderer.xaxis
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.graphdisplay.line.toLegacyInt
+import com.example.graphdisplay.lib.line.toLegacyInt
 
 class SimpleXAxisDrawer(
   private val labelTextSize: TextUnit = 12.sp,

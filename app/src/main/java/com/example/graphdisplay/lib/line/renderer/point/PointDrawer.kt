@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line.renderer.point
+package com.example.graphdisplay.lib.line.renderer.point
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Canvas

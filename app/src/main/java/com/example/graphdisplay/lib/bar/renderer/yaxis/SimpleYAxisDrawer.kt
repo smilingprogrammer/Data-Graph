@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line.renderer.yaxis
+package com.example.graphdisplay.lib.bar.renderer.yaxis
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.graphdisplay.line.toLegacyInt
+import com.example.graphdisplay.lib.line.toLegacyInt
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -79,8 +79,7 @@ class SimpleYAxisDrawer(
       val value = minValue + (i * ((maxValue - minValue) / labelCount))
 
       val label = labelValueFormatter(value)
-      val x =
-        drawableArea.right - axisLineThickness.toPx() - (labelTextSize.toPx() / 2f)
+      val x = drawableArea.right - axisLineThickness.toPx() - (labelTextSize.toPx() / 2f)
 
       labelPaint.getTextBounds(label, 0, label.length, textBounds)
 

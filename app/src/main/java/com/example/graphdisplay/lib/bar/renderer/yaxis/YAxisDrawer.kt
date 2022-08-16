@@ -1,4 +1,4 @@
-package com.example.graphdisplay.line.renderer.yaxis
+package com.example.graphdisplay.lib.bar.renderer.yaxis
 
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Canvas
